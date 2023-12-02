@@ -1,0 +1,183 @@
+@import url("https://npm.elemecdn.com/font6pro@6.0.1/css/all.min.css");
+
+
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    }
+
+
+
+body {
+    /*background: rgb(46,56,121);
+    background: linear-gradient(90deg, rgba(46,56,121,1) 0%, rgba(255,204,255,1) 35%, rgba(255,102,153,1) 100%);*/
+    /*background-image: url(https://sex.nyan.xyz/api/v2/img?r18=true);*/
+    background-image: url(https://moe.jitsu.top/img/?sort=pc&size=1440p);
+    background-color: rgba(19,21,25,0.5);
+
+    background-repeat:  no-repeat;
+    /*background-position: center center;*/
+    /*background-attach
+    
+    ment:  fixed;*/
+    background-size: cover;
+    
+    
+}
+
+.avg_img {
+    margin: auto;
+    transform: scale(0.25);
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top:20%;
+    left:50%;
+    box-shadow:0px 0px 40px rgba(63,81,181,0.72);
+    opacity:1;
+    margin:0 auto;
+    background-size:cover;
+    margin-bottom:20px;
+    transition:all 1.0s;
+    /*border-radius: 500px;*/
+    overflow:hidden;
+    width: 10rem;
+			height: 10rem;
+			line-height: 10rem;
+			border: solid 1px #ffffff;
+			border-radius: 100%;
+}
+
+.geyan {
+    text-align: center;
+    color:aliceblue;
+    font-size:large;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top:60%;
+    left:50%;
+    overflow:hidden;
+}
+
+.left-land {
+    float: left;
+    width: 20%;
+    position: fixed;
+    color:antiquewhite;
+}
+
+.center_avg {
+    display: -moz-flex;
+		display: -webkit-flex;
+		display: -ms-flex;
+		display: flex;
+		-moz-flex-direction: column;
+		-webkit-flex-direction: column;
+		-ms-flex-direction: column;
+		flex-direction: column;
+		-moz-align-items: center;
+		-webkit-align-items: center;
+		-ms-align-items: center;
+		align-items: center;
+		-moz-justify-content: space-between;
+		-webkit-justify-content: space-between;
+		-ms-justify-content: space-between;
+		justify-content: space-between;
+		position: relative;
+		min-height: 100vh;
+		width: 100%;
+		padding: 4rem 2rem;
+		z-index: 3;
+        content: '';
+}
+
+.content .inner {
+
+    -moz-transition: max-height 0.75s ease, padding 0.75s ease, opacity 0.325s ease-in-out;
+				-webkit-transition: max-height 0.75s ease, padding 0.75s ease, opacity 0.325s ease-in-out;
+				-ms-transition: max-height 0.75s ease, padding 0.75s ease, opacity 0.325s ease-in-out;
+				transition: max-height 0.75s ease, padding 0.75s ease, opacity 0.325s ease-in-out;
+				-moz-transition-delay: 0.25s;
+				-webkit-transition-delay: 0.25s;
+				-ms-transition-delay: 0.25s;
+				transition-delay: 0.25s;
+				padding: 3rem 2rem;
+				max-height: 40rem;
+				overflow: hidden;
+}
+
+.content .inner p {
+    text-align: center;
+    font-size: large;
+}
+
+.content {
+    border-style: solid;
+			border-color: #4c32aa;
+			border-top-width: 3px;
+			border-bottom-width: 3px;
+            border-left:none;
+            border-right:none;
+			max-width: 100%;
+            position: relative;
+            top: 300px;
+            left: 9x;
+            box-sizing: inherit;
+            
+}
+
+.center_avg nav ul li{
+    display: block;
+    padding-left: 50px;
+    padding-top: 30px;
+    border-left: solid 2px #ffffff;
+    background-color: rgba(76, 50, 170, 0.3);
+    -webkit-transition: background-color 500ms;
+    -o-transition: background-color 500ms;
+    transition: background-color 500ms;
+
+
+}
+
+.center_avg nav ul li:hover {
+    background-color: rgba(76, 50, 170, 0.75);
+}
+
+.center_avg nav ul li a {
+    display: inline-block;
+    letter-spacing: 0.2rem;
+    font-size: 0.8rem;
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
+    border-bottom: 0;
+    text-decoration: none;
+    color:aliceblue;
+    position: relative;
+    top: -15px;
+    left: -20px;
+    font-size: large;
+    
+}
+
+
+
+.center_avg nav ul {
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    margin-bottom: 0;
+    list-style: none;
+    padding-left: 0;
+    border: solid 2px #ffffff;
+    border-radius: 4px;
+}
+ul {
+    list-style: disc;
+    
+    margin: 0 0 2rem 0;
+    padding-left: 1em;
+}
+.center_avg nav {
+    top: 70%;
+    position: absolute;
+}
+
