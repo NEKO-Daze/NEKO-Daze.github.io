@@ -9,19 +9,12 @@
 
 
 body {
-    /*background: rgb(46,56,121);
-    background: linear-gradient(90deg, rgba(46,56,121,1) 0%, rgba(255,204,255,1) 35%, rgba(255,102,153,1) 100%);*/
-    /*background-image: url(https://sex.nyan.xyz/api/v2/img?r18=true);*/
+    
     background-image: url(https://moe.jitsu.top/img/?sort=pc&size=1440p);
     background-color: rgba(19,21,25,0.5);
 
     background-repeat:  no-repeat;
-    /*background-position: center center;*/
-    /*background-attach
-    
-    ment:  fixed;*/
     background-size: cover;
-    
     
 }
 
@@ -38,13 +31,23 @@ body {
     background-size:cover;
     margin-bottom:20px;
     transition:all 1.0s;
-    /*border-radius: 500px;*/
     overflow:hidden;
     width: 10rem;
 			height: 10rem;
 			line-height: 10rem;
 			border: solid 1px #ffffff;
 			border-radius: 100%;
+}
+
+.content .inner::before {
+    content: '';
+				display: block;
+				position: absolute;
+				top: calc(-3.5rem - 37px);
+				left: calc(50% + 6px);
+				width: 1px;
+				height: calc(3.5rem + 37px);
+                background-image: linear-gradient(to top,rgb(76, 50, 170),#ffffff);
 }
 
 .geyan {
@@ -105,9 +108,9 @@ body {
 				overflow: hidden;
 }
 
-.content .inner p {
+.content .inner h1, h3 {
     text-align: center;
-    font-size: large;
+    box-shadow:0px 0px 40px rgba(63,81,181,0.72);
 }
 
 .content {
@@ -127,9 +130,9 @@ body {
 
 .center_avg nav ul li{
     display: block;
+    opacity: 0.0;
     padding-left: 50px;
     padding-top: 30px;
-    border-left: solid 2px #ffffff;
     background-color: rgba(76, 50, 170, 0.3);
     -webkit-transition: background-color 500ms;
     -o-transition: background-color 500ms;
@@ -139,7 +142,11 @@ body {
 }
 
 .center_avg nav ul li:hover {
-    background-color: rgba(76, 50, 170, 0.75);
+    background-color: rgba(76, 50, 170, 0.6);
+}
+
+.center_avg nav ul .rightborder {
+    border-right: solid 1px #ffffff;
 }
 
 .center_avg nav ul li a {
@@ -167,8 +174,9 @@ body {
     margin-bottom: 0;
     list-style: none;
     padding-left: 0;
-    border: solid 2px #ffffff;
-    border-radius: 4px;
+    border: solid 1px #ffffff;
+    border-radius: 5px;
+    position: relative;
 }
 ul {
     list-style: disc;
@@ -176,6 +184,31 @@ ul {
     margin: 0 0 2rem 0;
     padding-left: 1em;
 }
+
+.center_avg nav ul::before {
+    content: '';
+				display: block;
+				position: absolute;
+				top: calc(-3.5rem - 40px);
+				left: calc(50% + 6px);
+				width: 1px;
+				height: calc(3.5rem + 50px);
+                background-image: linear-gradient(to top,#ffffff,rgb(76, 50, 170));
+}
+
+
+
+.center_avg .player iframe::before {
+    content: '';
+				display: block;
+				position: absolute;
+				top: calc(-3.5rem - 40px);
+				left: calc(50% + 6px);
+				width: 1px;
+				height: calc(3.5rem + 50px);
+                background-image: linear-gradient(to top,#ffffff,rgb(76, 50, 170));
+}
+
 .center_avg nav {
     top: 70%;
     position: absolute;
