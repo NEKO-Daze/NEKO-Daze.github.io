@@ -4,15 +4,41 @@
 * {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+    
     }
 
+html {
+    cursor: url(auto.png), auto;
+}
 
+a:hover {
+    cursor: url(point.png), auto;
+}
+
+.headtitle {
+    position: absolute;
+    left: 10%;
+    top: 40px;
+    width: 75%;
+    height: 50px;
+    border-radius: 20px;
+    background-color: #fff;
+}
+
+.headtitle li {
+    display: inline-block;
+    position: relative;
+    height: 50px;
+    width: 100px;
+    border-right: 2px;
+    border-color: black;
+}
 
 body {
-    
     background-image: url(https://moe.jitsu.top/img/?sort=pc&size=1440p);
-    background-color: rgba(19,21,25,0.5);
 
+    background-color: rgba(19,21,25,0.5);
+    
     background-repeat:  no-repeat;
     background-size: cover;
     
