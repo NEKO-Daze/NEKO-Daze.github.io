@@ -15,20 +15,20 @@ L_1=6,L2=16,L_n=6L_{n-1}-10L_{n-2}\\
 x=\arcsin(\frac{2}{|m_1|+|m_2|})\\
 $$
 $$
-\color{red}a\color{black}=\frac{\sum^\infty_{n=0}\frac{(-1)^n}{(2n+1)!}x^{2n+1}}{\sum^\infty_{n=0}\frac{(-1)^n}{(2n)!}x^{2n}}
+\color{red}a=\frac{\sum^\infty_{n=0}\frac{(-1)^n}{(2n+1)!}x^{2n+1}}{\sum^\infty_{n=0}\frac{(-1)^n}{(2n)!}x^{2n}}
 $$
 $$
 S=\{\gcd(88,152),\log_{\sin(\frac{\pi}{4})}2,\tanh 0,\lim_{x\to 0}\frac{\sin(x)}{x}\}\\
 p=P(x\in S\mid x \equiv 0(\mod 4))\\
-\color{red}b\color{black}=\max\limits_{n}\int^p_n(2x+4) dx
+\color{red}b=\max\limits_{n}\int^p_n(2x+4) dx
 $$
 $$
 A(3,5),B(5,8),C_1(x_1,y_1),C_2(x_2,y_2)\\
 AC_1=BC_1=AC_2=BC_2=\frac{\sqrt{2}}{2}AB\\
 f(x)=\ln(x+\sqrt{x^2+1})\\
 g(x)=f(f(f(x)+f(-x)))+e^{f(0)}x\\
-\color{red}c\color{black}=g(x1+y1)\\
-\color{red}d\color{black}=g(x2+y2)
+\color{red}c=g(x1+y1)\\
+\color{red}d=g(x2+y2)
 $$
 $$
 \begin{vmatrix}
@@ -60,7 +60,7 @@ $$
 再观察 $a$ 的等式，不难发现上面是 $\sin(x)$ 的无穷级数展开，下面则是 $\cos(x)$ 的无穷级数展开，因此有
 
 $$
-\color{red}a\color{black}=\frac{\sum^\infty_{n=0}\frac{(-1)^n}{(2n+1)!}x^{2n+1}}{\sum^\infty_{n=0}\frac{(-1)^n}{(2n)!}x^{2n}}=\frac{\sin(x)}{\cos(x)}
+\color{red}a=\frac{\sum^\infty_{n=0}\frac{(-1)^n}{(2n+1)!}x^{2n+1}}{\sum^\infty_{n=0}\frac{(-1)^n}{(2n)!}x^{2n}}=\frac{\sin(x)}{\cos(x)}
 =\tan(x)=\tan(\arcsin(\frac{1}{3}))=\frac{1}{3}$$
 
 ## 3.$b$ 的值
@@ -79,7 +79,7 @@ $p=P(x\in S\mid x \equiv 0(\mod 4))$ 意为 $S$ 中 $\bmod 4 = 0$ 的数在 $S$ 
 最后算积分即可
 
 $$
-\color{red}b\color{black}=\max\limits_{n}\int^p_n(2x+4) dx\\
+\color{red}b=\max\limits_{n}\int^p_n(2x+4) dx\\
 =\max\limits_{n}[x^2+4x]^{\frac{1}{2}}_{n}\\
 =\max\limits_{n}(\frac{1}{4}+2)-(n^2+4n)\\
 =\max\limits_{n}(\frac{9}{4}-n^2-4n)
