@@ -2,5 +2,6 @@
     "title":"NEKO-Daze的猫窝",
     "subTitle":"这个人很懒所以什么都不想写",
     "avatarUrl":"https://cdn.luogu.com.cn/upload/image_hosting/bwblvgwa.png",
-    "GMEEK_VERSION":"last"
+    "GMEEK_VERSION":"last",
+    "background-image":"https://github.com/Alittfre/vitepress-theme-bluearchive/blob/main/.vitepress/theme/assets/background_dark.svg"
 }
