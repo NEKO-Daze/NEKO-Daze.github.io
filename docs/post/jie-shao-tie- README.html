@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
     
-    <link rel="icon" href="https://cdn.luogu.com.cn/upload/image_hosting/bwblvgwa.png"><script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/143889667?v=4"><script>
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
@@ -19,7 +19,7 @@
 把洛谷时期的一些远古帖子搬了出来，截止至5.16之前的所有帖子皆为远古帖。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://NEKO-Daze.github.io/post/jie-shao-tie-%20README.html">
-<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/bwblvgwa.png">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/143889667?v=4">
 <title>介绍帖 README</title>
 
 
@@ -139,7 +139,11 @@ console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 
 <script>
 document.getElementById("pathHome").setAttribute("d",IconList["home"]);
 document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
-
+cmButton=document.getElementById("cmButton");
+    span=document.createElement("span");
+    span.setAttribute("class","Counter");
+    span.innerHTML="1";
+    cmButton.appendChild(span);
 
 
 function openComments(){
