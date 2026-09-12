@@ -37,7 +37,7 @@ jobs:
         run: npm ci # 使用 ci 比 install 更严格且快速
 
       - name: Build VitePress site
-        run: npm run docs:build # 确保 package.json 中有此脚本
+        run: npm run build # 确保 package.json 中有此脚本
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
