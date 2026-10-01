@@ -102,10 +102,11 @@ export default defineConfigWithTheme<ThemeConfig>({
 
     //gitalk配置
     clientID: 'Ov23liC6PiTWfVR0Ot7A',
-    clientSecret: '98ee0b4849500a690100c5b0e1333008840d70b7',
+    //clientSecret: '98ee0b4849500a690100c5b0e1333008840d70b7',
     repo: 'NEKO-Daze.github.io',
     owner: 'NEKO-Daze',
     admin: ['NEKO-Daze'],
+    proxy:'https://gitalk-proxy.sakurajimamegumi.workers.dev/get_accesstoken',
   },
   markdown: {
     theme: 'solarized-dark',
