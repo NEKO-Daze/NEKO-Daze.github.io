@@ -101,11 +101,11 @@ export default defineConfigWithTheme<ThemeConfig>({
     ],
 
     //gitalk配置
-    clientID: 'Ov23lia9U9wFN3WMyoKK',
-    clientSecret: 'b2418ab598c188c43a247c99e728dd2735d58c3b',
-    repo: 'vitepress-theme-bluearchive',
-    owner: 'Alittfre',
-    admin: ['Alittfre'],
+    clientID: 'Ov23liC6PiTWfVR0Ot7A',
+    clientSecret: '98ee0b4849500a690100c5b0e1333008840d70b7',
+    repo: 'NEKO-Daze.github.io',
+    owner: 'NEKO-Daze',
+    admin: ['NEKO-Daze'],
   },
   markdown: {
     theme: 'solarized-dark',
