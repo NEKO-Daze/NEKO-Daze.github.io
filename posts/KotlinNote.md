@@ -755,4 +755,263 @@ fun testName(func: (Int) -> String) {
 }
 ```
 
+## 2.6 内嵌函数
+
+使用高阶函数的性能开销还是挺大的，毕竟每个函数都是一个对象，里面又有一些局部变量，导致内存分配和虚拟调用造成的额外开销。
+
+因此，我们可以使用**内联 lambda 表达式**来消除额外开销，使用 `inline` 关键字会影响函数本身和传递给它的 lambdas，可以让方法的调用在编译时，直接替换为方法的执行代码。
+
+```kotlin
+fun main() = test()
+inline fun test() {
+    println("kskbl")
+    println("zdjd")
+}
+/*等价于如下形式
+fun main()
+{
+    println("kskbl")
+    println("zdjd")
+}
+ */
+```
+
+如果是一个高阶函数就更好了。
+
+```kotlin
+fun main() {
+    test{println("print:$it")}
+}
+inline fun test(func:(String)->Unit) {
+    println("Inline Function")
+    func("I don't like Kotlin")
+}
+/*等价于如下形式
+fun main() {
+    println("Inline Function")
+    val it = "I don't like Kotlin"
+    println("print:$it")
+}
+ */
+```
+
+虽然代码变多了，但是性能提升了。当然，如果不是高阶函数，那也没什么显著提升。
+
+注意，内联函数中的函数形参不能传给变量，只能调用。
+
+同样因为内联，所以 lambda 中的 `return` 语句可以不带标签。
+
+```kotlin
+fun main() {
+    test{return}
+    println("Test")
+}
+inline fun test(func:(String)->Unit){
+    func("我要打上海Major")
+    println("Inline Function")
+}
+// 结果是没有任何输出，直接返回
+```
+
+这叫做**非局部返回**。
+
+实际上，在 Kotlin 中 Lambda 表达式支持一个叫做"标签返回"（labeled return）的特性，这使得你能够从一个 Lambda 表达式中返回一个值给外围函数，而不是简单地返回给 Lambda 表达式所在的最近的封闭函数，就像下面这样：
+
+```kotlin
+fun main() {
+    test { return@main }  //标签可以直接指定为外层函数名称main来提前终止整个外部函数
+    println("调用上面方法之后")
+}
+
+inline fun test(func: (String) -> Unit){
+    func("HelloWorld")
+    println("调用内联函数之后")
+}
+//同样没有任何输出
+```
+
+如果一个内联的高阶函数中存在好几个函数参数，但我们希望让某个函数参数不使用内联，能够像之前一样当变量用，可以使用 `noinline` 关键字。
+
+```kotlin
+fun main() = test({println("First:$it")},{println("Second:$it")})
+inline fun test(func:(String)->Unit,noinline func2:(Int)->Unit) {
+    println("Inline Function")
+    func("Kskbl")
+    var a = func2
+    func2(114514)
+}
+/*等价于如下形式
+fun main() {
+    println("Inline Function")
+    val it = "Kskbl"
+    println("First:$it")
+    val func2(Int)->Unit={println("Second:$it")}
+    func2(114514)
+}
+ */
+```
+
+后面我们会继续介绍 `Kotlin` 中函数的性质。
+
+## 2.7 类与对象
+
+前面我们一直使用的是顶层定义，就是直接在 `.kt` 文件中定义函数和变量。
+
+当然，这些内容也可以包装进类中，这样才叫面向对象编程嘛。
+
+类似的，我们使用 `class` 关键字定义类。
+
+```kotlin
+class Student {} //没有内容时可以省略花括号
+```
+
+类名一般按大驼峰习惯命名，和变量名、函数名的命名规则相同。
+
+当然，我们也可以项目的 `src` 目录中为类单开一个 `.kt` 文件，这也是一种开发规范。
+
+有了类，肯定还要添加点属性，这时我们需要指定类的构造函数（函数的一种，专用于构造对象），`Kotlin` 中的类可以添加一个**主构造函数**和一个或多个**次要构造函数**。主构造函数写在类的定义中。
+
+```kotlin
+class Student constructor(name:String,age:Int){}
+```
+
+如果主构造函数没有任何注释或可见性修饰符，可以省略 `constructor` 关键字。类中没有内容时同样可以省略花括号。
+
+```kotlin
+class Student(name:String,age:Int)
+```
+
+但我们现在传的只是构造函数的参数，还不是类的属性，要加上 `var` 和 `val` 关键字来指示是否只读。
+
+```kotlin
+class Student(var name:String,val age:Int = 18)
+```
+
+除此之外，你还可以直接写在类里面，作为类的成员变量，但此时必须赋予默认值。
+
+```kotlin
+class Student {
+    var name:String = ""
+    var age:Int = 0
+}
+```
+
+这样我们就可以不编写主构造函数也能定义属性，但是这里仍然会隐式生成一个无参的构造函数，为了构造函数能够方便地传值初始化，也可以像这样写：
+
+```kotlin
+class Student(name: String, age: Int) {
+    var name: String = name   //通过构造函数传递过来
+    var age: Int = age
+}
+```
+
+当然，如果不希望这些属性在一开始就有初始值，而是之后某一个时刻去设定初始值，我们也可以为其添加懒加载：
+
+```kotlin
+class Student {
+    lateinit var name: String   //懒加载的属性可以不用在一开始赋值，但是在下一次使用之前一定要先完成赋值，否则报错
+    var age: Int = 0
+}
+```
+
+当然，这样写成类成员变量，也可以自定义 `getter` 和 `setter` 属性。
+
+```kotlin
+class Shape(var width:Int,var height:Int) {
+    val area get() = width * height
+}
+```
+
+现在我们定义了主构造函数之后，该怎么去使用它呢？
+
+跟我们调用普通函数一样，这里的函数名称就是类的名称，如果一个类没有编写构造函数，那么这个类默认情况下使用一个无参构造函数创建：
+
+```kotlin
+fun main() {
+    Student()
+}
+```
+
+有构造函数时，直接往里面填参数就行了。
+
+```kotlin
+fun main()
+{
+    Student("Hina",17)
+}
+```
+
+这样就能创建一个 `Student` 类型的对象，这个对象可以用变量接收，但存放的只是对象的引用，类似 `C` 的指针。
+
+```kotlin
+fun main()
+{
+    val stu:Student = Student("Hina", 17)
+    val stu2 = stu // 只传递了对象的引用
+}
+```
+
+对于对象的引用，我们可以用三个等号 `===` 来判断是否引用了相同的对象。
+
+```kotlin
+fun main() {
+    val s1 = Student("Hina", 17)
+    val s2 = s1
+    println(s1 === s2)  //输出为true
+    val s3 = Student("Hina", 17)
+    val s4 = Student("Hina", 17)   //即使名字和年龄一样，但是由于这里重新创建了一次对象
+    println(s3 === s4) // 因此此处输出为false
+}
+```
+
+对象的属性可以用 `.` 运算符读取和进行修改。
+
+```kotlin
+fun main() {
+    val stu = Student("Hina", 17)
+    println("name=${stu.name},age=${stu.age}")
+    stu.name = "Hoshino"
+    //stu.age = 16 这里无法修改，因为age属性为val
+}
+```
+
+次要构造函数可以直接在类中编写。
+
+```kotlin
+class Student(var name:String,val age:Int) {
+    constructor(name:String):this(name,17)
+}
+```
+
+每个次要构造函数需要通过另一个次要构造函数直接或间接委托给主构造函数。委托到同一类的另一个构造函数是 `this` 关键字完成的。`this` 就表示当前这个类，而 `this()` 就是这个类的构造函数。
+
+注意次要构造函数不能像主构造函数一样定义属性，里面的参数仅仅是传入的参数。
+
+如果一个类没有主构造函数，那么我们也可以直接在在类中编写次要构造函数，但是不需要主动委托一次主构造函数，他这里会隐式包含，所以说我们直接写就行了：
+
+```kotlin
+class Student {
+    constructor(name: String)  //这里的参数仍然只能是一个形参
+}
+```
+
+次要构造函数同样可以用来创建对象。
+
+```kotlin
+val stu = Student("Hina")
+```
+
+次要构造函数还可以编写自定义的函数体。
+
+```kotlin
+open class Student {
+    constructor(str:String) {
+        println("My name is $str")
+    }
+}
+```
+
+* 主构造函数可以定义类属性，使用更方便，但只能有一个，且不能编写函数体，一般用于类属性的初始化赋值。
+* 次要构造函数可以有多个，且可以自定义函数体，但不能定义类属性，并且有主构造函数时必须调用主构造函数。
+
 $$\Large 未完待续$$
