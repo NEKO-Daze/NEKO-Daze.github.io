@@ -1014,4 +1014,99 @@ open class Student {
 * 主构造函数可以定义类属性，使用更方便，但只能有一个，且不能编写函数体，一般用于类属性的初始化赋值。
 * 次要构造函数可以有多个，且可以自定义函数体，但不能定义类属性，并且有主构造函数时必须调用主构造函数。
 
+## 2.8 对象的初始化
+
+我们可以使用 `init` 关键字完成对象的初始化。
+
+```kotlin
+class Student(var name:String, var age:Int) {
+    init {
+        println("init start")
+        if (age<18) age = 18
+        println("init end")
+    }
+}
+
+fun main() {
+    val str = Student("Megumi", 17)
+    println(str.age) // 输出为18而非17
+}
+```
+
+`init` 关键字也可以写多个。
+
+当成员属性写在类中时，执行顺序从上到下，因此不能在 `init` 里调用这些成员属性。
+
+`init` 代码块优先于主构造函数执行，没有主构造函数时亦如此，因此会先执行 `init`，再执行主构造函数，最后执行每个次要构造函数。
+
+## 2.9 类的成员函数
+
+类当然不仅能定义属性，还能定义方法（成员函数）。我们同样用 `fun` 关键字定义，直接写在类里面，调用方法和调用属性类似。
+
+```kotlin
+class Student(var name:String, var age:Int) {
+    fun hello(){
+        println("Hello!")
+    }
+}
+fun main() {
+    val stu = Student("Megumi", 17)
+    stu.hello()
+}
+```
+
+当出现变量的歧义的时候，会优先使用作用域最近的一个。而如果我们想使用类中的成员属性，则需要使用 `this` 关键字。
+
+```kotlin
+class Student(var name:String, var age:Int) {
+    fun hello(name:String) {
+        println("My name is $name,age is ${age},you can also call me ${this.name}") // 作用域不冲突时可以省略this
+    }
+}
+```
+
+同样在类中可以进行函数重载。
+
+```kotlin
+class Student(private var name: String, private var age: Int) {
+    fun hello() = println("大家好啊，我叫${this.name}，今年${age}岁了")
+    fun hello(gender: String) = println("大家好啊，我叫${this.name}，今年${age}岁了，性别${gender}")
+}
+```
+
+## 2.10 基本类型 part 2
+
+其实基本类型也是一种类，我们定义的变量也是一种对象，因此这些变量同样有很多的成员函数。
+
+比如之前提到的类型转换，因为 `Kotlin` 没有隐式转换，所以要用一系列方法来进行类型转换：`toInt()`,`toByte()`,`toChar()`,`toFloat()`,`toDouble()`,`toLong()`,`toShort()`,`toString()`……
+
+`String` 中的大小写转化同样有相应的成员函数。`lowercase()` 和 `uppercase()` 可以进行字符串整体的大小写转化。除了大小写转发，可以使用 `replace()` 方法可以替换字符串中的某个字符并返回替换后的结果，`startWith()` 方法可以判断字符串是否以指定文本开头并返回 `Boolean` 类型的结果。`isBlank()` 可以判断字符串是否为空字符串，`isEmpty()` 可以判断是否有空格。
+
+## 2.11 运算符重载函数
+
+我们可以使用 `operator` 关键字实现运算符重载，这个关键字加在方法前面。
+
+```kotlin
+class Student(var name: String, var age: Int) {
+    //注意，二元运算符必须带一个形参，表示右侧的操作数，返回值为计算出来的结果
+  	//形参和结果可以是任意类型，我们还可以提供多次编写同名的运算符重载函数来适配不同的类型
+    operator fun plus(another: Student): Student{
+        //比如这里我们希望两个学生对象相加，得到的结果为名字相加，年龄相加的一个新学生
+        return Student(this.name + another.name, this.age + another.age)
+    }
+}
+```
+
+这样我们就完成了加法 `+` 的运算符重载，可以直接将两个 `Student` 类型对象相加得到新 `Student` 对象。
+
+一元运算符的对应函数名称如下
+
+* `+a`：`unaryPlus()`
+* `-a`：`unaryMinus()`
+* `!a`：`not()`
+* `a--`：`dec()`
+* `a++`：`inc()`
+
+其中 `dec()` 和 `inc()` 比较特殊，因为它们要返回一个值分配使用这个操作的变量，而不是改变执行 `inc()` 和 `dec()` 的对象，意思就是执行后应该得到一个新生成的对象，然后变量的值直接引用到这个新的对象。
+
 $$\Large 未完待续$$
